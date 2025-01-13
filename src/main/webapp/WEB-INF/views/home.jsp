@@ -8,6 +8,5 @@
 </head>
 <body>
 	<h1>MyPortal</h1>
-	<p>
 </body>
 </html>
