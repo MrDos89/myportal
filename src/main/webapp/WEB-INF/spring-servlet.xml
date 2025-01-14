@@ -23,4 +23,31 @@
 		<!-- 특정 필터를 제외하고 등록할 경우 -->
 		<!-- context:exclude-filter type="regex" expression=".*" /-->
 	</context:component-scan>
+	
+	<!-- 어노테이션 기반 Spring MVC 설정을 활성화 -->
+	<mvc:annotation-driven />
+	<!-- 정적 자원 처리를 위한 디폴트 서블릿 핸들러 위임 -->
+	<mvc:default-servlet-handler />
+	
+	<!-- ViewResolver 설정 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
+	</bean>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 </beans>
