@@ -18,16 +18,18 @@ public class MainController {
 	
 	@RequestMapping("/except")
 	public String except() {
-//		throw new RuntimeException("force Exception");
-		throw new MainControllerException();
+		throw new RuntimeException("force Exception");
+//		throw new MainControllerException();
 	}
 	
 	//	ExceptionHandler v1
+	/*
 	@ExceptionHandler(RuntimeException.class)
 	@ResponseBody
 	public String handlerControllerException(RuntimeException e) {
 		return "Exception: " + e.getMessage();
 	}
+	*/
 	
 	//	ExceptionHandler v2
 	@ExceptionHandler(MainControllerException.class)
