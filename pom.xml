@@ -88,6 +88,22 @@
 	    <version>9.1.0</version>
 	</dependency>
 
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<!-- MyBatis -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.19</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<!-- MyBatis Spring -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-spring</artifactId>
+	    <version>3.0.4</version>
+	</dependency>
+
 
 
   </dependencies>
