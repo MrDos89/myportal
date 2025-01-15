@@ -54,7 +54,7 @@
 					pattern="yyyy-MM-dd" /></td>
 			<td>
 				<!-- 수정 -->
-				<a href="">
+				<a href="<c:url value="/guestbook/delete/${vo.no }" />">
 					삭제
 				</a>
 			</td>

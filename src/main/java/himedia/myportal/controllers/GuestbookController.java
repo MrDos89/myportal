@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import himedia.myportal.repositories.vo.GuestbookVo;
 import himedia.myportal.services.GuestbookService;
@@ -36,5 +38,23 @@ public class GuestbookController {
 		return "redirect:/guestbook";
 	}
 	
+	@RequestMapping(value="/delete/{no}",
+			method=RequestMethod.GET)
+	public String deleteForm(@PathVariable("no") Integer no, 
+							Model model) {
+		model.addAttribute("no", no);
+		return "guestbook/deleteform";
+	}
 	
+	@RequestMapping(value="/delete",
+			method=RequestMethod.POST)
+	public String deleteAction(@ModelAttribute GuestbookVo vo) {
+		boolean success = guestbookServiceImpl.deleteMessage(vo);
+		System.out.println("Delete Result:" + success);
+		return "redirect:/guestbook";
+	}
 }
+
+
+
+

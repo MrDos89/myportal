@@ -16,4 +16,10 @@
 			#{password},
 			#{content})
 	</insert>
+	
+	<delete id="delete"
+		parameterType="guestbookVo">
+	DELETE FROM guestbook
+	WHERE no=#{no} AND password=#{password}
+	</delete>
 </mapper>
