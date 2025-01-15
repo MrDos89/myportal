@@ -8,11 +8,18 @@
 	ORDER BY regdate DESC;
 	</select>
 	
-	<insert id="insert" parameterType="guestbookVo">
-	INSERT INTO guestbook (name, password, content) VALUES (#{name}, #{password}, #{content})
+	<insert id="insert"
+		parameterType="guestbookVo">
+	INSERT INTO guestbook
+		(name, password, content)
+	VALUES(#{name},
+			#{password},
+			#{content})
 	</insert>
 	
-	<delete id="delete" parameterType="guestbookVo">
-	DELETE FROM guestbook WHERE no=#{no} AND password=#{password}
+	<delete id="delete"
+		parameterType="guestbookVo">
+	DELETE FROM guestbook
+	WHERE no=#{no} AND password=#{password}
 	</delete>
 </mapper>

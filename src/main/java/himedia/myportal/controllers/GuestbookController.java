@@ -31,27 +31,30 @@ public class GuestbookController {
 	
 	@PostMapping("/write")
 	public String write(@ModelAttribute GuestbookVo vo) {
-		System.out.println("FORM: " + vo);
-		
-		boolean success = guestbookServiceImpl.writeMessage(vo);
-		
-		System.out.println("Write Result: " + success);
-		
+		System.out.println("FORM:" + vo);
+		boolean success = guestbookServiceImpl
+							.writeMessage(vo);
+		System.out.println("Write Result:" + success);
 		return "redirect:/guestbook";
 	}
 	
-	@RequestMapping(value="/delete/{no}", method=RequestMethod.GET)
-	public String deleteForm(@PathVariable("no") Integer no, Model model) {
+	@RequestMapping(value="/delete/{no}",
+			method=RequestMethod.GET)
+	public String deleteForm(@PathVariable("no") Integer no, 
+							Model model) {
 		model.addAttribute("no", no);
-		
 		return "guestbook/deleteform";
 	}
 	
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	@RequestMapping(value="/delete",
+			method=RequestMethod.POST)
 	public String deleteAction(@ModelAttribute GuestbookVo vo) {
 		boolean success = guestbookServiceImpl.deleteMessage(vo);
-		System.out.println("삭제 결과: " + success);
-		
+		System.out.println("Delete Result:" + success);
 		return "redirect:/guestbook";
 	}
 }
+
+
+
+
