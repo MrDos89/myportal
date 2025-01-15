@@ -7,4 +7,8 @@
 	FROM guestbook 
 	ORDER BY regdate DESC;
 	</select>
+	
+	<insert id="insert" parameterType="guestbookVo">
+	INSERT INTO guestbook (name, password, content) VALUES (#{name}, #{password}, #{content})
+	</insert>
 </mapper>

@@ -27,7 +27,7 @@
       
       <!-- Content -->
 	<h1>방명록</h1>
-	<form action="" 
+	<form action="<c:url value="/guestbook/write"/>" 
 			method="POST">
 	<table border=1 width=500>
 		<tr>

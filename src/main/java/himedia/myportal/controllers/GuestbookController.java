@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import himedia.myportal.repositories.vo.GuestbookVo;
@@ -23,5 +25,16 @@ public class GuestbookController {
 				guestbookServiceImpl.getMessageList();
 		model.addAttribute("list", list);
 		return "guestbook/list";
+	}
+	
+	@PostMapping("/write")
+	public String write(@ModelAttribute GuestbookVo vo) {
+		System.out.println("FORM: " + vo);
+		
+		boolean success = guestbookServiceImpl.writeMessage(vo);
+		
+		System.out.println("Write Result: " + success);
+		
+		return "redirect:/guestbook";
 	}
 }
