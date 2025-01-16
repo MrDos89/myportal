@@ -26,8 +26,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserVo selectUser(String email) {
-				
-		return null;
+		UserVo vo = sqlSession.selectOne("user.selectUserByEmail", email);
+		
+		return vo;
 	}
 
 	@Override
