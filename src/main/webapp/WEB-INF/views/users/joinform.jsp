@@ -10,7 +10,7 @@
 <link type="text/css" 
 	rel="stylesheet" 
 	href="<%= request.getContextPath() %>/css/users.css"/>
-<script src="<c:url value="/javascript/users.jsp" />"></script>
+<script src="<c:url value="/javascript/users.js" />"></script>
 </head>
 <body>
   <div id="container">
