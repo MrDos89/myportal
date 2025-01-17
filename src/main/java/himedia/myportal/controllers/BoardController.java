@@ -37,14 +37,14 @@ public class BoardController {
 	@GetMapping("/write")
 	public String writeForm(HttpSession session) {
 		// 로그인 하지 않은 사용자는 홈페이지로 리다이렉트
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
-		if(authUser == null) {
-//			System.err.println("로그인 사용자 아님!");
-			logger.debug("로그인 사용자 아님!");
-			return "redirect:/";
-		}
-		
+//		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		
+//		if(authUser == null) {
+////			System.err.println("로그인 사용자 아님!");
+//			logger.debug("로그인 사용자 아님!");
+//			return "redirect:/";
+//		}
+//		
 		return "board/write";
 	}
 	
@@ -75,13 +75,13 @@ public class BoardController {
 	
 	@GetMapping("/{no}/modify")
 	public String modifyFrom(@PathVariable("no") Integer no, Model model, HttpSession session) {
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		if (authUser == null) {
-//			System.err.println("로그인 사용자 아님!");
-			logger.debug("로그인 사용자 아님!");
-			return "redirect:/";
-		}
-		
+//		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		if (authUser == null) {
+////			System.err.println("로그인 사용자 아님!");
+//			logger.debug("로그인 사용자 아님!");
+//			return "redirect:/";
+//		}
+//		
 		BoardVo vo = boardServiceImpl.getContent(no);
 		model.addAttribute("vo", vo);
 		
@@ -92,11 +92,11 @@ public class BoardController {
 	public String modify(@ModelAttribute BoardVo updateVo, HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		
-		if (authUser == null) {
-//			System.err.println("로그인 사용자 아님!");
-			logger.debug("로그인 사용자 아님!");
-			return "redirect:/";
-		}
+//		if (authUser == null) {
+////			System.err.println("로그인 사용자 아님!");
+//			logger.debug("로그인 사용자 아님!");
+//			return "redirect:/";
+//		}
 		
 		BoardVo vo = boardServiceImpl.getContent(updateVo.getNo());
 		
@@ -118,11 +118,11 @@ public class BoardController {
 	public String deleteAction(@PathVariable("no") Integer no, HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		
-		if (authUser == null) {
-//			System.err.println("로그인 사용자 아님!");
-			logger.debug("로그인 사용자 아님!");
-			return "redirect:/";
-		}
+//		if (authUser == null) {
+////			System.err.println("로그인 사용자 아님!");
+//			logger.debug("로그인 사용자 아님!");
+//			return "redirect:/";
+//		}
 		
 		boardServiceImpl.deleteByNoAndUserNo(no, authUser.getNo());
 		

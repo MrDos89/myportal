@@ -24,28 +24,28 @@
 			</Pattern>
 		</encoder>
 		<!-- FixedWindowRollingPolicy : myportal.1.log ~ myportal.10.log 파일을 유지 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-	    	<fileNamePattern>\log-myportal\myportal.%d{yyyy-MM-dd}.log</fileNamePattern>
+		<!-- rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+	    	<fileNamePattern>\log-myportal\logFile.%i.log</fileNamePattern>
 		    <minIndex>1</minIndex>
 		    <maxIndex>10</maxIndex>
-		</rollingPolicy>	
+		</rollingPolicy -->	
 		<!-- TimeBasedRollingPolicy -->
-		<!-- rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-		    <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		    <fileNamePattern>\log-myportal\myportal.%d{yyyy-MM-dd}.log</fileNamePattern>
 		    <maxHistory>30</maxHistory> 
-		</rollingPolicy -->
+		</rollingPolicy>
 		<!-- SizeAndTimeBasedRollingPolicy -->
-		<!--  rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-		    <fileNamePattern>logFile.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-		    <maxFileSize>10MB</maxFileSize>
+		<!-- rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+		    <fileNamePattern>\log-myportal\logFile.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+		    <maxFileSize>1KB</maxFileSize>
 		    <maxHistory>30</maxHistory>
 		</rollingPolicy -->
 		
 		<!-- TimeBased, SizeAndTimeBased는 트리거링 팔러시가 존재하지 않음 -->
-		<triggeringPolicy
+		<!-- triggeringPolicy
 			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
 			<MaxFileSize>1KB</MaxFileSize>
-		</triggeringPolicy>
+		</triggeringPolicy -->
 	</appender>
 	
 	<!-- 해당 로거가 사용될 패키지와 로그 레벨을 지정 -->

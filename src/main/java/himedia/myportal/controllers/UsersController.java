@@ -70,13 +70,13 @@ public class UsersController {
 		}
 	}
 	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.removeAttribute("authUser");
-		session.invalidate();
-		
-		return "redirect:/";
-	}
+//	@GetMapping("/logout")
+//	public String logout(HttpSession session) {
+//		session.removeAttribute("authUser");
+//		session.invalidate();
+//		
+//		return "redirect:/";
+//	}
 	
 	@ResponseBody
 	@GetMapping("/checkEmail")
