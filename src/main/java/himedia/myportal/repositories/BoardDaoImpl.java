@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,7 @@ import himedia.myportal.repositories.vo.BoardVo;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
+	private static final Logger logger = LoggerFactory.getLogger(BoardDaoImpl.class);
 	@Autowired 
 	SqlSession sqlSession;
 	
@@ -25,6 +28,8 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int insert(BoardVo boardVo) {
 		try {
+			logger.debug(boardVo.toString());
+			
 			return sqlSession.insert("board.insert", boardVo);
 		} catch (Exception e) {
 			throw new BoardDaoException("게시물 삽입 중 예외 발생", boardVo);

@@ -64,6 +64,10 @@ public class BoardController {
 		*/
 		
 		vo.setUserNo(authUser.getNo());
+		
+		logger.debug(authUser.toString());
+		logger.debug(vo.toString());
+		
 		boardServiceImpl.write(vo);
 		
 		return "redirect:/board";
