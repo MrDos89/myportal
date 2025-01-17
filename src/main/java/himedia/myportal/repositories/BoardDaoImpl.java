@@ -13,13 +13,12 @@ import himedia.myportal.repositories.vo.BoardVo;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
-	@Autowired
+	@Autowired 
 	SqlSession sqlSession;
 	
 	@Override
 	public List<BoardVo> selectAll() {
 		List<BoardVo> list = sqlSession.selectList("board.selectAll");
-		
 		return list;
 	}
 
@@ -36,14 +35,13 @@ public class BoardDaoImpl implements BoardDao {
 	public BoardVo getContent(Integer no) {
 		sqlSession.update("board.increaseHitCount", no);
 		BoardVo vo = sqlSession.selectOne("board.getContent", no);
-		
 		return vo;
 	}
 
 	@Override
 	public int update(BoardVo boardVo) {
-		int updatedCount = sqlSession.update("board.update", boardVo);
-		
+		int updatedCount = 
+			sqlSession.update("board.update", boardVo);
 		return updatedCount;
 	}
 

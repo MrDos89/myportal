@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+	prefix="c" %>
 <html>
 <head>
-	<title>My Homepage</title>
-	<meta charset=utf-8>
-	<link type="text/css" 
+<meta charset="UTF-8">
+<title>My Homepage</title>
+<link type="text/css" 
 	rel="stylesheet" 
 	href="<%= request.getContextPath() %>/css/board.css"/>
+</head>
 </head>
 <body>
   <div id="container">
@@ -18,7 +20,8 @@
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 	<div id="wrapper">
       <div id="content">
-
+    
+    
 	<table border="1" width="640">
 		<tr>
 			<td colspan="6"><h3>게시판</h3></td>
@@ -39,24 +42,28 @@
 			<td>${vo.hit }</td>
 			<td>${vo.regDate }</td>
 			<td>
-			<c:if test="${not empty authUser }">
-				<c:if test="${authUser.no == vo.userNo }">
-					<a href="">삭제</a>
+				<c:if test="${not empty authUser }">
+					<c:if test="${authUser.no == vo.userNo }">
+				<a href="<c:url value="/board/${vo.no }/delete" />">삭제</a>
+					</c:if>
 				</c:if>
-			</c:if>
 			</td>
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="6"><a href="<c:url value="/board/write" />">글쓰기</a></td>
+			<td colspan="6">
+				<a href="<c:url value="/board/write" />">글쓰기</a>
+			</td>
 		</tr>
 	</table>
 	
-	    </div>
+
+    </div>
 	</div>
 	
 	
 	<c:import url="/WEB-INF/views/includes/footer.jsp" />
   </div>
+  
 </body>
 </html>

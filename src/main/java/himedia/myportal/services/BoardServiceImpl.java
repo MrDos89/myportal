@@ -37,7 +37,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean deleteByNoAndUserNo(Integer no, Integer userNo) {
-		
 		return 1 == boardDaoImpl.delete(no, userNo);
 	}
 

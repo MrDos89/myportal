@@ -2,8 +2,8 @@ package himedia.myportal.controllers;
 
 import java.util.List;
 
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +21,16 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger 
+		= LoggerFactory.getLogger(BoardController.class);
+	
 	@Autowired
 	private BoardService boardServiceImpl;
 	
-	@RequestMapping({"","/","list"})
+	@RequestMapping({"", "/", "/list"})
 	public String list(Model model) {
-		List<BoardVo> list = boardServiceImpl.getList();
-		
+		List<BoardVo> list = 
+				boardServiceImpl.getList();
 		model.addAttribute("list", list);
 		
 		return "board/list";
@@ -36,27 +38,30 @@ public class BoardController {
 	
 	@GetMapping("/write")
 	public String writeForm(HttpSession session) {
-		// 로그인 하지 않은 사용자는 홈페이지로 리다이렉트
-//		UserVo authUser = (UserVo)session.getAttribute("authUser");
-//		
-//		if(authUser == null) {
-////			System.err.println("로그인 사용자 아님!");
-//			logger.debug("로그인 사용자 아님!");
-//			return "redirect:/";
-//		}
-//		
+		//	로그인 하지 않은 사용자는 홈페이지로 리다이렉트
+		/*
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if (authUser == null) {
+//			System.err.println("로그인 사용자 아님!");
+			logger.debug("로그인 사용자 아님");
+			return "redirect:/";
+		}
+		*/
 		return "board/write";
 	}
 	
 	@PostMapping("/write")
-	public String writeAction (@ModelAttribute BoardVo vo, HttpSession session) {
+	public String writeAction(
+			@ModelAttribute BoardVo vo,
+			HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
+		/*
 		if (authUser == null) {
 //			System.err.println("로그인 사용자 아님!");
-			logger.debug("로그인 사용자 아님!");
+			logger.debug("로그인 사용자 아님");
 			return "redirect:/";
 		}
+		*/
 		
 		vo.setUserNo(authUser.getNo());
 		boardServiceImpl.write(vo);
@@ -64,24 +69,28 @@ public class BoardController {
 		return "redirect:/board";
 	}
 	
-	//게시물 조회
+	//	게시물 조회
 	@GetMapping("/{no}")
-	public String view(@PathVariable("no") Integer no, Model model) {
+	public String view(@PathVariable("no") Integer no,
+			Model model) {
 		BoardVo vo = boardServiceImpl.getContent(no);
 		model.addAttribute("vo", vo);
-		
 		return "board/view";
 	}
 	
 	@GetMapping("/{no}/modify")
-	public String modifyFrom(@PathVariable("no") Integer no, Model model, HttpSession session) {
-//		UserVo authUser = (UserVo)session.getAttribute("authUser");
-//		if (authUser == null) {
-////			System.err.println("로그인 사용자 아님!");
-//			logger.debug("로그인 사용자 아님!");
-//			return "redirect:/";
-//		}
-//		
+	public String modifyForm(
+		@PathVariable("no") Integer no,
+		Model model, 
+		HttpSession session) {
+		/*
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if (authUser == null) {
+//			System.err.println("로그인 사용자 아님!");
+			logger.debug("로그인 사용자 아님");
+			return "redirect:/";
+		}
+		*/
 		BoardVo vo = boardServiceImpl.getContent(no);
 		model.addAttribute("vo", vo);
 		
@@ -89,20 +98,20 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(@ModelAttribute BoardVo updateVo, HttpSession session) {
+	public String modify(@ModelAttribute BoardVo updateVo,
+			HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
-//		if (authUser == null) {
-////			System.err.println("로그인 사용자 아님!");
-//			logger.debug("로그인 사용자 아님!");
-//			return "redirect:/";
-//		}
+		/*
+		if (authUser == null) {
+			System.err.println("로그인 사용자 아님!");
+			return "redirect:/";
+		}
+		*/
 		
 		BoardVo vo = boardServiceImpl.getContent(updateVo.getNo());
 		
 		if (vo.getUserNo() != authUser.getNo()) {
-//			System.err.println("게시물 작성자 아님!");
-			logger.debug("게시물 작성자 아님!");
+			System.err.println("게시물 작성자 아님!");
 			return "redirect:/board";
 		}
 		
@@ -115,17 +124,29 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{no}/delete")
-	public String deleteAction(@PathVariable("no") Integer no, HttpSession session) {
+	public String deleteAction(@PathVariable("no") Integer no,
+			HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
-//		if (authUser == null) {
-////			System.err.println("로그인 사용자 아님!");
-//			logger.debug("로그인 사용자 아님!");
-//			return "redirect:/";
-//		}
-		
+		/*
+		if (authUser == null) {
+//			System.err.println("로그인 사용자 아님!");
+			logger.debug("로그인 사용자 아님");
+			return "redirect:/";
+		}
+		*/
 		boardServiceImpl.deleteByNoAndUserNo(no, authUser.getNo());
 		
 		return "redirect:/board/list";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
