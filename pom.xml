@@ -135,20 +135,41 @@
 	    <version>2.18.2</version>
 	</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>jcl-over-slf4j</artifactId>
-    <version>${jcloverslf4j.version}</version>
-</dependency>
+	<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>jcl-over-slf4j</artifactId>
+	    <version>${jcloverslf4j.version}</version>
+	</dependency>
 
-<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-<dependency>
-    <groupId>ch.qos.logback</groupId>
-    <artifactId>logback-classic</artifactId>
-    <version>${logback-version}</version>
-    <!-- scope>test</scope-->
-</dependency>
+	<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>${logback-version}</version>
+	    <!-- scope>test</scope-->
+	</dependency>
+	
+	<dependency>
+	    <groupId>io.github.cdimascio</groupId>
+	    <artifactId>java-dotenv</artifactId>
+	    <version>5.2.2</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+	<dependency>
+	    <groupId>jakarta.validation</groupId>
+	    <artifactId>jakarta.validation-api</artifactId>
+	    <version>3.1.0</version>
+	</dependency>
+	
+	<!-- Hibernate Validator -->
+	<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+	<dependency>
+	    <groupId>org.hibernate.validator</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>8.0.2.Final</version>
+	</dependency>
 
   </dependencies>
 </project>
