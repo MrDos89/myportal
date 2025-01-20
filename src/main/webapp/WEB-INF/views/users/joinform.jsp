@@ -39,7 +39,7 @@
 		<spring:hasBindErrors name="userVo">
 			<c:if test="${errors.hasFieldErrors('name') }">
 				<strong style="color:red">
-				${errors.getFieldError('name').defaultMessage }
+				<spring:message code="${errors.getFieldError('name').codes[0] }" text="${errors.getFieldError('name').defaultMessage }" />
 				</strong>
 				<br />
 			</c:if>
@@ -47,9 +47,27 @@
 	
 		<label for="password">비밀번호</label>
 		<input name="password" type="password" placeholder="비밀번호를 입력하십시오"><br>
+		        <spring:hasBindErrors name="userVo">
+			<c:if test="${errors.hasFieldErrors('password') }">
+				<strong style="color:red">
+				<%-- ${errors.getFieldError('password').defaultMessage } --%>
+				<spring:message code="${errors.getFieldError('password').codes[0] }" text="${errors.getFieldError('password').defaultMessage }" />
+				</strong>
+				<br />
+			</c:if>
+		</spring:hasBindErrors>
 	
 		<label for="email">이메일</label>
 		<input type="text" name="email" placeholder="이메일을 입력하십시오."><br>
+		<spring:hasBindErrors name="userVo">
+			<c:if test="${errors.hasFieldErrors('email') }">
+				<strong style="color:red">
+				<%-- ${errors.getFieldError('email').defaultMessage } --%>
+				<spring:message code="${errors.getFieldError('email').codes[0] }" text="${errors.getFieldError('email').defaultMessage }" />
+				</strong>
+				<br />
+			</c:if>
+		</spring:hasBindErrors>
 	
 		<input id="check-email" type="button" data-target="<c:url value="/users/checkEmail" />" value="id 중복 체크">
 		<input type="hidden" name="emailCheck" value="n">
